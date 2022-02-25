@@ -12,30 +12,24 @@ class Task1
   }
 
   // Solution
-  static string MagicBox(string x)
+  static string MagicBox(string word)
   {
     string res = "";
-    int cnt = 1;
-    for (int i = 0; i < x.Length; i++)
+    int count = 1;
+
+    for (int i = 0; i < word.Length - 1; i++)
     {
-      try
+      if (word[i] == word[i + 1])
       {
-        if (x[i] == x[i + 1])
-        {
-          cnt++;
-        }
-        else
-        {
-          res += x[i] + cnt.ToString();
-          cnt = 1;
-        }
+        count++;
       }
-      catch (IndexOutOfRangeException)
+      else
       {
-        res += x[i] + cnt.ToString();
-        cnt = 1;
+        res += word[i] + count.ToString();
+        count = 1;
       }
     }
+    res += word[word.Length - 1] + count.ToString();
     return res;
   }
 }
